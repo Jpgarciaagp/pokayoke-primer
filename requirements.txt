@@ -1,0 +1,2 @@
+Pillow==10.0.1
+PySimpleGui==4.60.5
