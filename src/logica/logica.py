@@ -11,11 +11,13 @@ class Logica:
     def leer_paso(self):
         with open(self.ruta_paso) as f:
             paso_actual = f.read()
+            paso_actual = paso_actual.replace(' ', '')
         return paso_actual
     
     def validar_estado(self):
         with open(self.ruta_validacion) as f:
             validacion = f.read()
+            validacion = validacion.replace(' ', '')
         return validacion
     
     def fecha_actualizacion(self):
@@ -57,7 +59,7 @@ class Logica:
             validacion = self.validar_estado()
             if validacion == 'OK':
                 window[key_list[0]].update(luz_encendida)
-            elif validacion == 'NO OK':
+            elif validacion == 'NOOK':
                 window[key_list[1]].update(luz_encendida)
         return window
     
