@@ -11,13 +11,13 @@ class Logica:
     def leer_paso(self):
         with open(self.ruta_paso) as f:
             paso_actual = f.read()
-            paso_actual = paso_actual.replace(' ', '')
+            paso_actual = paso_actual.replace(' ', '').replace('\n', '')
         return paso_actual
     
     def validar_estado(self):
         with open(self.ruta_validacion) as f:
             validacion = f.read()
-            validacion = validacion.replace(' ', '')
+            validacion = validacion.replace(' ', '').replace('\n', '')
         return validacion
     
     def fecha_actualizacion(self):
