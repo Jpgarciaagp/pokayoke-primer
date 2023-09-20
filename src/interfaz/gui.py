@@ -113,5 +113,5 @@ class AppPrimer:
             paso = self.logica.leer_paso()
             self.logica.iluminar_paso(window, str(paso), self.lights_off, self.lights_on)
             self.logica.iluminar_validacion(window, str(paso), self.lights_off, self.lights_on)
-            if paso == 5:
-                foto = self.logica.actualizar_foto()
+            if paso == '5':
+                foto = self.logica.actualizar_foto(window, paso)

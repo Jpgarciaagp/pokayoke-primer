@@ -24,7 +24,11 @@ class Logica:
         return fecha
     
     def procesar_foto(self):
-        foto = Image.open(self.ruta_foto)
+        try:
+            foto = Image.open(self.ruta_foto)
+        except:
+            foto = Image.new('RGB', (80, 60))
+            foto.save('./src/media/foto.png', 'PNG')
         w, h = foto.size
         foto_final = foto.resize((w*5, h*5))
         return foto_final
@@ -58,7 +62,7 @@ class Logica:
         return window
     
     def actualizar_foto(self, window, paso):
-        if paso == 5:
+        if paso == '5':
             foto = self.procesar_foto()
             window['-FOTO-'].update(data = ImageTk.PhotoImage(image=foto))
             return window

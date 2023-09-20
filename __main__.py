@@ -1,5 +1,6 @@
 from src.interfaz.gui import AppPrimer
 from src.logica.logica import Logica
+from PIL import Image
 
 foto = './src/media/foto.png'
 paso = './paso.txt'
