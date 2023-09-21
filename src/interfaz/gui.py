@@ -59,15 +59,15 @@ class AppPrimer:
         luz_nook = psg.Image(self.lights_off, key='-LUZNOOK-', pad=(50, 0))
 
         luz1_title = psg.Text(text='PASO 1', font=self.titles_font, text_color=self.titles_color, 
-                              justification='center', pad=(30, 0))
+                              justification='center', pad=(20, 0))
         luz2_title = psg.Text(text='PASO 2', font=self.titles_font, text_color=self.titles_color, 
-                              justification='center', pad=(30, 0))
+                              justification='center', pad=(25, 0))
         luz3_title = psg.Text(text='PASO 3', font=self.titles_font, text_color=self.titles_color, 
-                              justification='center', pad=(30, 0))
+                              justification='center', pad=(25, 0))
         luz4_title = psg.Text(text='PASO 4', font=self.titles_font, text_color=self.titles_color, 
-                              justification='center', pad=(30, 0))
+                              justification='center', pad=(25, 0))
         luz5_title = psg.Text(text='PASO 5', font=self.titles_font, text_color=self.titles_color, 
-                              justification='center', pad=(30, 0))
+                              justification='center', pad=(20, 0))
         luzok_title = psg.Text(text='OK', font=self.titles_font, text_color=self.titles_color, 
                               justification='center', pad=(105, 0))
         luznook_title = psg.Text(text='NO OK', font=self.titles_font, text_color=self.titles_color, 
@@ -76,13 +76,13 @@ class AppPrimer:
         luz1_description = psg.Text(text='Limpieza\n cara interna', font=self.subtitles_font, text_color=self.titles_color, 
                               justification='center', pad=(25, 0))
         luz2_description = psg.Text(text='Limpieza\n cara externa', font=self.subtitles_font, text_color=self.titles_color, 
-                              justification='center', pad=(45, 0))
+                              justification='center', pad=(30, 0))
         luz3_description = psg.Text(text='Aplicación\n primer horizontal', font=self.subtitles_font, text_color=self.titles_color, 
                               justification='center', pad=(0, 0))
         luz4_description =psg.Text(text='Aplicación\n primer vertical', font=self.subtitles_font, text_color=self.titles_color, 
-                              justification='center', pad=(45, 0))
+                              justification='center', pad=(30, 0))
         luz5_description =psg.Text(text='Fotografía', font=self.subtitles_font, text_color=self.titles_color, 
-                              justification='center', pad=(25, 0))
+                              justification='center', pad=(30, 0))
 
         body_photo = psg.Column([[foto]], expand_x=True, element_justification='left', expand_y=True)
         body_steps_light = psg.Column([[luz1_title, luz2_title, luz3_title, luz4_title, luz5_title],
