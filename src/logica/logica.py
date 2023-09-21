@@ -51,7 +51,7 @@ class Logica:
             window[key_list[4]].update(luz_encendida)
         return window
     
-    def iluminar_validacion(self, window, paso, luz_apagada, luz_encendida):
+    def iluminar_validacion(self, window, paso, luz_apagada, luz_encendida, luz_error):
         key_list = ['-LUZOK-', '-LUZNOOK-']
         for key in key_list:
             window[key].update(luz_apagada)
@@ -60,7 +60,7 @@ class Logica:
             if validacion == 'OK':
                 window[key_list[0]].update(luz_encendida)
             elif validacion == 'NOOK':
-                window[key_list[1]].update(luz_encendida)
+                window[key_list[1]].update(luz_error)
         return window
     
     def actualizar_foto(self, window, paso):

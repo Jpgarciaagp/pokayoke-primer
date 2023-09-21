@@ -4,7 +4,7 @@ from PIL import ImageTk
 
 class AppPrimer:
     
-    def __init__(self, logo, title, width, height, logica, lights_off, lights_on):
+    def __init__(self, logo, title, width, height, logica, lights_off, lights_on, lights_error):
         self.logica = logica
         self.banner_font = ("Segoe UI", 28, "bold")
         self.default_font = ("Segoe UI", 16)
@@ -19,6 +19,7 @@ class AppPrimer:
         self.foto = logica.procesar_foto()
         self.lights_off = lights_off
         self.lights_on = lights_on
+        self.lights_error = lights_error
         self.window = self.construct_window(width, height)
     
     def update_banner(self, banner, width):
@@ -99,7 +100,7 @@ class AppPrimer:
 
         window = psg.Window(self.title, layout, 
                     resizable=True, finalize=True,
-                    no_titlebar=False, keep_on_top=True, margins=(0,0))
+                    no_titlebar=False, keep_on_top=False, margins=(0,0))
         
         window['-FOTO-'].update(data = ImageTk.PhotoImage(image=self.foto))
         self.update_banner(banner[0], width)

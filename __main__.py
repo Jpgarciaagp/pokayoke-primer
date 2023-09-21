@@ -13,7 +13,8 @@ def main():
         height=720,
         logica = logica,
         lights_off = './src/media/light_off.png',
-        lights_on = './src/media/light_on.png'
+        lights_on = './src/media/light_on.png',
+        lights_error = './src/media/light_error.png'
     )
     window = app.window
     app.ejecutar(window)
