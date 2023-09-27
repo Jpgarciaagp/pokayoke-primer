@@ -116,3 +116,4 @@ class AppPrimer:
             self.logica.iluminar_validacion(window, str(paso), self.lights_off, self.lights_on, self.lights_error)
             if paso == '5':
                 foto = self.logica.actualizar_foto(window, paso)
+                self.logica.fecha_actualizacion()
