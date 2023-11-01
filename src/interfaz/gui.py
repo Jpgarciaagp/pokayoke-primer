@@ -126,6 +126,7 @@ class AppPrimer:
         
         window['-FOTO-'].update(data = ImageTk.PhotoImage(image=self.foto))
         self.update_banner(banner[0], width)
+        window.maximize()
         return window
     
     def ejecutar(self, window):
