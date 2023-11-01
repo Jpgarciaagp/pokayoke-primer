@@ -2,9 +2,8 @@ import PySimpleGUI as psg
 import datetime as dt
 from PIL import ImageTk
 
-class AppPrimer:
-    
-    def __init__(self, logo, title, width, height, logica, lights_off, lights_on, lights_error):
+class AppPrimer:    
+    def __init__(self, logo, title, width, height, logica, lights_off, lights_on, lights_error, start, stop, status_ok, status_nook, p_naranja, p_rosado, p_verde):
         self.logica = logica
         self.banner_font = ("Segoe UI", 28, "bold")
         self.default_font = ("Segoe UI", 16)
@@ -20,7 +19,15 @@ class AppPrimer:
         self.lights_off = lights_off
         self.lights_on = lights_on
         self.lights_error = lights_error
-        self.window = self.construct_window(width, height)
+        self.start = start
+        self.stop = stop
+        self.status_ok = status_ok
+        self.status_nook = status_nook
+        self.p_naranja = p_naranja
+        self.p_rosado = p_rosado
+        self.p_verde = p_verde
+        
+        self.window = self.construct_window(width, height)        
     
     def update_banner(self, banner, width):
         banner.erase()
@@ -58,6 +65,16 @@ class AppPrimer:
         luz_ok = psg.Image(self.lights_off, key='-LUZOK-', pad=(50, 0))
         luz_nook = psg.Image(self.lights_off, key='-LUZNOOK-', pad=(50, 0))
 
+        luz_statusok = psg.Image(self.status_ok, key='-LUZSTATUSOK-')
+        luz_statusnook = psg.Image(self.status_nook, key='-LUZSTATUSNOOK-')
+        boton_start = psg.Image(self.start, key='-BOTONSTART-')
+        boton_stop = psg.Image(self.stop, key='-BOTONSTOP-')
+
+        p_verde = psg.Image(self.p_verde, key='-PVerde-', pad=(125,0), expand_x=True)
+        p_naranja = psg.Image(self.p_naranja, key='-PNaranja-', pad=(0,0), expand_x=True)
+        p_rosado1 = psg.Image(self.p_rosado, key='-PRosado1-', pad=(10,0), expand_x=True)
+        p_rosado2 = psg.Image(self.p_rosado, key='-PRosado2-', pad=(125,0), expand_x=True)
+
         luz1_title = psg.Text(text='PASO 1', font=self.titles_font, text_color=self.titles_color, 
                               justification='center', pad=(20, 0))
         luz2_title = psg.Text(text='PASO 2', font=self.titles_font, text_color=self.titles_color, 
@@ -74,28 +91,33 @@ class AppPrimer:
                               justification='center', pad=(80, 0))
         
         luz1_description = psg.Text(text='Limpieza\n cara interna', font=self.subtitles_font, text_color=self.titles_color, 
-                              justification='center', pad=(25, 0))
-        luz2_description = psg.Text(text='Limpieza\n cara externa', font=self.subtitles_font, text_color=self.titles_color, 
                               justification='center', pad=(30, 0))
+        luz2_description = psg.Text(text='Limpieza\n cara externa', font=self.subtitles_font, text_color=self.titles_color, 
+                              justification='center', pad=(45, 0))
         luz3_description = psg.Text(text='Aplicación\n primer horizontal', font=self.subtitles_font, text_color=self.titles_color, 
                               justification='center', pad=(0, 0))
         luz4_description =psg.Text(text='Aplicación\n primer vertical', font=self.subtitles_font, text_color=self.titles_color, 
-                              justification='center', pad=(30, 0))
+                              justification='center', pad=(45, 0))
         luz5_description =psg.Text(text='Fotografía', font=self.subtitles_font, text_color=self.titles_color, 
                               justification='center', pad=(30, 0))
 
         body_photo = psg.Column([[foto]], expand_x=True, element_justification='left', expand_y=True)
+        body_steps_panos = psg.Column([[p_naranja, p_verde, p_rosado1, p_rosado2]])
         body_steps_light = psg.Column([[luz1_title, luz2_title, luz3_title, luz4_title, luz5_title],
                                        [luz_1, luz_2, luz_3, luz_4, luz_5],
-                                       [luz1_description, luz2_description, luz3_description, luz4_description, luz5_description]], 
+                                       [luz1_description, luz2_description, luz3_description, luz4_description, luz5_description],
+                                       [body_steps_panos]], 
+                                       expand_x=True, element_justification='center')
+        body_steps_control = psg.Column([[luz_statusok, boton_start, boton_stop]], 
                                        expand_x=True, element_justification='center')
         body_steps_valid = psg.Column([[luzok_title, luznook_title],
                                        [luz_ok, luz_nook]], 
                                        expand_x=True, element_justification='center')
+       
 
         layout = [banner,
                   [body_photo, body_steps_light],
-                  [psg.vtop(foto_title),body_steps_valid],
+                  [body_steps_control,body_steps_valid],
                   [footer]]
 
         window = psg.Window(self.title, layout, 
