@@ -70,10 +70,10 @@ class AppPrimer:
         boton_start = psg.Image(self.start, key='-BOTONSTART-')
         boton_stop = psg.Image(self.stop, key='-BOTONSTOP-')
 
-        p_verde1 = psg.Image(self.p_verde, key='-PVerde1-', pad=(125,0), expand_x=True)
-        p_verde2 = psg.Image(self.p_verde, key='-PVerde2-', pad=(0,0), expand_x=True)
-        p_rosado1 = psg.Image(self.p_rosado, key='-PRosado1-', pad=(10,0), expand_x=True)
-        p_rosado2 = psg.Image(self.p_rosado, key='-PRosado2-', pad=(125,0), expand_x=True)
+        p_verde1 = psg.Image(self.p_verde, key='-PVerde1-', pad=((80,0), (0,0)))
+        p_verde2 = psg.Image(self.p_verde, key='-PVerde2-', pad=((117,0), (0,0)))
+        p_rosado1 = psg.Image(self.p_rosado, key='-PRosado1-', pad=((117,0), (0,0)))
+        p_rosado2 = psg.Image(self.p_rosado, key='-PRosado2-', pad=((117,0), (0,0)))
 
         luz1_title = psg.Text(text='PASO 1', font=self.titles_font, text_color=self.titles_color, 
                               justification='center', pad=(20, 0))
@@ -93,16 +93,16 @@ class AppPrimer:
         luz1_description = psg.Text(text='Limpieza\n cara interna', font=self.subtitles_font, text_color=self.titles_color, 
                               justification='center', pad=(25, 0))
         luz2_description = psg.Text(text='Limpieza\n cara externa', font=self.subtitles_font, text_color=self.titles_color, 
-                              justification='center', pad=(30, 0))
+                              justification='center', pad=(40, 0))
         luz3_description = psg.Text(text='Aplicación\n primer horizontal', font=self.subtitles_font, text_color=self.titles_color, 
                               justification='center', pad=(0, 0))
         luz4_description =psg.Text(text='Aplicación\n primer vertical', font=self.subtitles_font, text_color=self.titles_color, 
-                              justification='center', pad=(30, 0))
+                              justification='center', pad=(40, 0))
         luz5_description =psg.Text(text='Fotografía', font=self.subtitles_font, text_color=self.titles_color, 
                               justification='center', pad=(25, 0))
 
         body_photo = psg.Column([[foto]], expand_x=True, element_justification='left', expand_y=True)
-        body_steps_panos = psg.Column([[p_verde1, p_verde2, p_rosado1, p_rosado2]])
+        body_steps_panos = psg.Column([[p_verde1, p_verde2, p_rosado1, p_rosado2]], element_justification='left', expand_x=True)
         body_steps_light = psg.Column([[luz1_title, luz2_title, luz3_title, luz4_title, luz5_title],
                                        [luz_1, luz_2, luz_3, luz_4, luz_5],
                                        [luz1_description, luz2_description, luz3_description, luz4_description, luz5_description],
@@ -126,7 +126,6 @@ class AppPrimer:
         
         window['-FOTO-'].update(data = ImageTk.PhotoImage(image=self.foto))
         self.update_banner(banner[0], width)
-        window.maximize()
         return window
     
     def ejecutar(self, window):
