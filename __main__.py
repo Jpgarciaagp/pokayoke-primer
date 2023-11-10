@@ -1,10 +1,16 @@
+import datetime as dt
+
 from src.interfaz.gui import AppPrimer
 from src.logica.logica import Logica
 
 foto = './src/media/foto.png'
-paso = './paso.txt'
-validacion = './validacion.txt'
-logica = Logica(paso, foto, validacion)
+paso = './src/data/paso.txt'
+validacion = './src/data/validacion.txt'
+horainicio = './src/data/inicio.txt'
+status = './src/data/status.txt'
+
+logica = Logica(paso, foto, validacion, horainicio, status)
+
 def main():
     app = AppPrimer(
         logo='./src/media/logo_sglass blanco.png',
@@ -21,7 +27,7 @@ def main():
         status_nook = './src/media/status_nook.png',
         p_naranja = './src/media/naranja.png',
         p_rosado = './src/media/rosado.png',
-        p_verde = './src/media/verde.png',
+        p_verde = './src/media/verde.png'
         )
     window = app.window
     app.ejecutar(window)

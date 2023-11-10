@@ -1,11 +1,14 @@
 import os
 import datetime as dt
+import math
 from PIL import Image, ImageTk
 
 class Logica:
-    def __init__(self, path_paso, path_foto, path_validacion):
+    def __init__(self, path_paso, path_foto, path_validacion, path_arranque, path_status):
         self.ruta_paso = path_paso
         self.ruta_foto = path_foto
+        self.ruta_arranque = path_arranque
+        self.ruta_status = path_status
         self.ruta_validacion = path_validacion
 
     def leer_paso(self):
@@ -13,6 +16,19 @@ class Logica:
             paso_actual = f.read()
             paso_actual = paso_actual.replace(' ', '').replace('\n', '')
         return paso_actual
+    
+    def leer_status(self):
+        with open(self.ruta_status) as f:
+            status = f.read()
+            status = status.replace(' ','').replace('\n', '')
+        return status
+
+    def leer_hora_arranque(self):
+        with open(self.ruta_arranque) as f:
+            arranque = f.read()
+            arranque = arranque.replace(' ','').replace('\n', '')
+        arranque = dt.datetime.strptime(arranque, '%d/%m/%Y,%H:%M:%S')
+        return arranque
     
     def validar_estado(self):
         with open(self.ruta_validacion) as f:
@@ -68,3 +84,22 @@ class Logica:
             foto = self.procesar_foto()
             window['-FOTO-'].update(data = ImageTk.PhotoImage(image=foto))
             return window
+    
+    def actualizar_horainicio(self, window):
+        hora_inicio = self.leer_hora_arranque()
+        hora_actual = dt.datetime.now()
+        diferencia_segundos = (hora_actual - hora_inicio).total_seconds()
+        minutos = divmod(diferencia_segundos, 60)
+        tiempo = f'Tiempo de ejecución:\n{math.floor(minutos[0])}:{math.floor(minutos[1])}'
+        window['-TIEMPOINICIO-'].update(tiempo)
+        return tiempo
+    
+    def start_button(self):
+        with open("./src/data/start.txt", 'w') as f:
+            f.write("1")
+    
+    def reset_button(self):
+        with open("./src/data/start.txt", 'w') as f:
+            f.write("0")
+
+
