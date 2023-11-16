@@ -127,7 +127,7 @@ class AppPrimer:
                   [footer]]
 
         window = psg.Window(self.title, layout, 
-                    resizable=True, finalize=True,
+                    resizable=False, finalize=True,
                     no_titlebar=False, keep_on_top=False, margins=(0,0))
         
         window['-FOTO-'].update(data = ImageTk.PhotoImage(image=self.foto))
