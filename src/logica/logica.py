@@ -94,6 +94,14 @@ class Logica:
         window['-TIEMPOINICIO-'].update(tiempo)
         return tiempo
     
+    def status_sistema(self, window, status_ok, status_nook):
+        status = self.leer_status()
+        if status == '1':
+            window['-LUZSTATUS-'].update(status_ok)
+        else:
+            window['-LUZSTATUS-'].update(status_nook)
+        return window
+    
     def start_button(self):
         with open("./src/data/start.txt", 'w') as f:
             f.write("1")

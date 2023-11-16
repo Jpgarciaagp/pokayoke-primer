@@ -7,8 +7,8 @@ class AppPrimer:
         self.logica = logica
         self.banner_font = ("Segoe UI", 28, "bold")
         self.default_font = ("Segoe UI", 16)
-        self.titles_font = ("Segoe UI", 20, "bold")
-        self.subtitles_font = ("Segoe UI", 12)
+        self.titles_font = ("Segoe UI", 17, "bold")
+        self.subtitles_font = ("Segoe UI", 10)
         self.update_font = ("Segoe UI", 12)
         self.bg_color = '#eef5f6'
         self.banner_color = '#8fc5cf'
@@ -131,7 +131,7 @@ class AppPrimer:
                     no_titlebar=False, keep_on_top=False, margins=(0,0))
         
         window['-FOTO-'].update(data = ImageTk.PhotoImage(image=self.foto))
-        window.maximize()
+        #window.maximize()
         self.update_banner(banner[0])
         return window
     
@@ -148,6 +148,7 @@ class AppPrimer:
             self.logica.iluminar_paso(window, str(paso), self.lights_off, self.lights_on)
             self.logica.iluminar_validacion(window, str(paso), self.lights_off, self.lights_on, self.lights_error)
             self.logica.actualizar_horainicio(window)
+            self.logica.status_sistema(window, self.status_ok, self.status_nook)
             if paso == '5':
                 self.logica.actualizar_foto(window, paso)
                 self.update_banner(window['-BANNER-'])
