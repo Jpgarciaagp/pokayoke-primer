@@ -131,6 +131,7 @@ class AppPrimer:
                     no_titlebar=False, keep_on_top=False, margins=(0,0))
         
         window['-FOTO-'].update(data = ImageTk.PhotoImage(image=self.foto))
+        window.maximize()
         self.update_banner(banner[0])
         return window
     
